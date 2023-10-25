@@ -69,9 +69,19 @@ def create_answer():
         print('Invalid question_id. Please enter a valid number.')
 
 def create_question():
-    question = input('Enter the question:')
-    new_question = Question.create(question)
-    print(f'Success: {new_question}')
+   while True:
+        question = input('Enter the question:')
+    
+        if question.strip():
+            try:
+                new_question = Question.create(question)
+                print(f'Success: {new_question}')
+                break  
+            except ValueError as e:
+                print(f'Error: {e}')
+        else:
+            print('Error: The question cannot be empty. Please try again.')
+    
 
 def delete_question():
     id = input('Enter the questions id:')
