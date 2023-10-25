@@ -57,11 +57,16 @@ def answer_find_by_id():
     answer = Answer.find_by_id(id)
     print(answer) if answer else print(f'Answer {id} not found')
 
-def create_answer(cls):
+def create_answer():
     question_id = input('Enter the question_id:')
     answer = input('Enter the answer:')
-    new_answer = cls.create(question_id, answer)
-    print(f'Success: {new_answer}')
+
+    try:
+        question_id = int(question_id)
+        new_answer = Answer.create(question_id, answer)
+        print(f'Success: {new_answer}')
+    except ValueError:
+        print('Invalid question_id. Please enter a valid number.')
 
 def create_question():
     question = input('Enter the question:')
