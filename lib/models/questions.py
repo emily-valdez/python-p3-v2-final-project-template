@@ -1,10 +1,6 @@
-import sqlite3
-# this connects us to the database
-CONN = sqlite3.connect('holidays.db')
-# this creates a tool where we can talk to the database
-CURSOR = CONN.cursor()
+from __init__ import CURSOR, CONN
 
-class Questions:
+class Question:
     def __init__(self, question, id = None ):
         self.question = question
         self.id = id
@@ -31,11 +27,11 @@ class Questions:
         sql = 'SELECT * FROM questions'
 
         list_of_tuples = CURSOR.execute( sql ).fetchall()
-        return [cls.instance_from_db(row) for row in list_of_tuples]
+        return [cls.from_db(row) for row in list_of_tuples]
 
     @classmethod
     def from_db(cls,row):
-        question_instance = Questions( row[1],row[2] )
+        question_instance = Question( row[1],row[2] )
         question_instance.id = row[0]
         return question_instance
     

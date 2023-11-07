@@ -6,6 +6,8 @@ from helpers import (
     helper_2
 )
 
+from lib.models.answers import Answer
+from lib.models.questions import Question
 
 def main():
     while True:
