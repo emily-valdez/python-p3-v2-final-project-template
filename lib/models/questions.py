@@ -1,4 +1,4 @@
-from __init__ import CURSOR, CONN
+from models.config import CURSOR, CONN
 
 class Question:
     def __init__(self, question, id = None ):
