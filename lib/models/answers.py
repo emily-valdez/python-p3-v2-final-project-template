@@ -1,8 +1,7 @@
 from __init__ import CURSOR, CONN
 
 class Answer:
-    def __init__(self, name, question_id, response, id = None):
-        self.name = name
+    def __init__(self, question_id, response, id = None): 
         self.question_id = question_id
         self.response = response
         self.id = id
@@ -31,7 +30,7 @@ class Answer:
         sql = '''
             CREATE TABLE answers(
                 id INTEGER PRIMARY KEY,
-                name TEXT,
+         TEXT,
                 question_id INTEGER,
                 response TEXT
             )
@@ -46,10 +45,10 @@ class Answer:
         self.id = None
 
     @classmethod
-    def create(cls, name, question_id, response):
-        new_answer = cls(name, question_id, response)
-        sql = 'INSERT INTO answers (name, question_id, response) VALUES(?, ?, ?)'
-        params_tuple = (new_answer.name, new_answer.question_id, new_answer.response)
+    def create(cls, question_id, response):
+        new_answer = (cls, question_id, response)
+        sql = 'INSERT INTO answers, question_id, response) VALUES(?, ?, ?)'
+        params_tuple = ( new_answer.question_id, new_answer.response)
         CURSOR.execute(sql, params_tuple)
         CONN.commit()
         return new_answer

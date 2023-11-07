@@ -16,11 +16,27 @@ class Question:
         CURSOR.execute(sql)
 
     @classmethod
+    def create( cls, question, id = None ):
+        new_question = cls(question, id = None)
+        sql = 'INSERT INTO answers (question, id = None) VALUES(?, ?, ?)'
+        params_tuple = (new_question.question, new_question.id)
+        CURSOR.execute(sql, params_tuple)
+        CONN.commit()
+        return new_question
+
+    @classmethod
     def delete_table(cls):
         sql = 'DELETE FROM questions'
 
         CURSOR.execute(sql)
         CONN.commit()
+
+    def delete(self):
+        sql = 'DELETE FROM question WHERE id = ?'
+        params_tuple = (self.id,)
+        CURSOR.execute(sql, params_tuple)
+        CONN.commit()
+        self.id = None
 
     @classmethod
     def all(cls):
