@@ -1,11 +1,13 @@
 from models.config import CURSOR, CONN
 
 class Answer:
-    all = {}
     def __init__(self, question_id, response, id = None): 
         self.question_id = question_id
         self.response = response
         self.id = id
+
+    def __repr__( self ):
+        return f'{self.id}. {self.response}'
 
     @classmethod
     def all(cls):
@@ -21,10 +23,8 @@ class Answer:
 
     def delete(self):
         sql = 'DELETE FROM answers WHERE id = ?'
-        # params_tuple = (self.id,)
         CURSOR.execute(sql, (self.id,))
         CONN.commit()
-        del type(self).all[self.id]
         self.id = None
 
     def save(self):
@@ -33,20 +33,8 @@ class Answer:
         '''
         CURSOR.execute(sql, (self.question_id, self.response))
         CONN.commit()
-
         self.id = CURSOR.lastrowid
-        type(self).all[self.id] = self
-
-    # @classmethod
-    # def create_table(cls):
-    #     sql = '''
-    #         CREATE TABLE answers (
-    #         id INTERGER PRIMARY KEY,
-    #         question_id INTERGER,
-    #         response TEXT
-    #         )
-    #     '''
-    #     CURSOR.execute(sql)
+        
 
     @classmethod
     def create(cls, question_id, response):
