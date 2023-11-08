@@ -6,7 +6,7 @@ class Question:
         self.id = id
 
     def __repr__( self ):
-        return f'{self.id}. {self.question}'
+        return f'{self.question}'
 
     @classmethod
     def all(cls):
