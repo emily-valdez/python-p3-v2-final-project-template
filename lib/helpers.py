@@ -9,7 +9,10 @@ def question_list():
         print(question)
 
 def answer_list():
-    pass
+    answers = Answer.all()
+    for answers in answers:
+        print(answers)
+        return
 
 def question_find_by_id():
     pass
@@ -30,5 +33,8 @@ def delete_answer():
     pass
 
 def exit_program():
-    print("Happy Holidays!")
+    print("Thanks for coming, Happy Holidays!")
     exit()
+
+def to_go_order():
+    pass

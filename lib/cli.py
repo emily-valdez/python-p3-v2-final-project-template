@@ -3,7 +3,14 @@
 from helpers import (
     exit_program,
     question_list,
-    helper_2
+    answer_list,
+    question_find_by_id,
+    answer_find_by_id,
+    create_question,
+    create_answer,
+    delete_question,
+    delete_answer,
+    to_go_order
 )
 
 def main():
@@ -11,12 +18,26 @@ def main():
     while True:
         
         choice = input("> ")
-        if choice == "2":
+        if choice == "1":
+            question_list()
+        elif choice == "2":
+            answer_list()
+        elif choice == "3":
+            question_find_by_id()
+        elif choice == "4":
+            answer_find_by_id()
+        elif choice == "5":
+            create_question()
+        elif choice == "6":
+            create_answer()
+        elif choice == "7":
+            delete_question()
+        elif choice == "8":
+            delete_answer()
+        elif choice == "9":
             exit_program()
-        elif choice == "1":
-            helper_1()
-        elif choice == "0":
-            helper_2()
+        elif choice == "10":
+            to_go_order()
         else:
             print("Invalid option.")
 
