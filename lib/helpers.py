@@ -14,12 +14,12 @@ def answer_list():
         print(answers)
         return
 
-def question_find_byid():
+def question_find_by_id():
     id = input('Enter the questions id:')
     question = Question.find_byid(id)
     print(question) if question else print(f'Question {id_} not found')
 
-def answer_find_byid():
+def answer_find_by_id():
     id = input('Enter the answers id:')
     answer = Answer.find_byid(id)
     print(answer) if answer else print(f'Answer {id_} not found')
@@ -35,7 +35,7 @@ def create_answer():
     new_answer = Answer.create(question_id, answer)
     print(f'Succes: {answer}')
 
-def deletequestion():
+def delete_question():
     id = input('Enter the questions id:')
     if question := Question.find_byid(id):
         question.delete()
@@ -43,7 +43,7 @@ def deletequestion():
     else:
         print(f'Question {id} not found')
 
-def deleteanswer():
+def delete_answer():
     id = input('Enter the answers id:')
     if answer := Answer.find_byid(id):
         answer.delete()
