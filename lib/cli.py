@@ -54,7 +54,7 @@ def menu():
     print("7. Delete a question")
     print("8. Delete a answer")
     print("9. Exit the dinner ")
-    print("10. No capacity for an inquisition? It happens to all of us. Build a plate to-go instead")
+    print("10. No capacity for an inquisition? It happens to all of us. Build a plate to-go instead.")
 
 
 

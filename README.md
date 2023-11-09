@@ -1,45 +1,37 @@
-# Phase 3 CLI+ORM Project Template
+# Phase 3 CLI+ORM Project: Holiday Table
 
-## Learning Goals
-
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI.
+#### Made with :white_heart: by Kassidy Matos, Tom Golebiewski, and Emily Valdez
 
 ---
 
 ## Introduction
+:snowflake: :snowflake: :snowflake: Welcome to the Holidays!!! :snowflake: :snowflake: :snowflake:
 
-You now have a basic idea of what constitutes a CLI. Fork and clone this lesson
-for a project template for your CLI.
+In true holiday fashion, your loved ones want updates on your life. Take a seat at the dining table, and get ready for a round of rapid-fire questions! For each question, select a recommended response, or redirect the conversation to the food. Once you have made it through all of the questions, your reward awaits…
 
-Take a look at the directory structure:
+---
+
+### The directory structure for this project:
 
 ```console
-.
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
 └── lib
     ├── models
-    │   ├── __init__.py
-    │   └── model_1.py
+    │   ├── answers.py
+    │   └── config.py
+    │   └── dishes.py
+    │   └── questions.py
     ├── cli.py
     ├── debug.py
     └── helpers.py
 ```
-
-Note: The directory also includes two files named `CONTRIBUTING.md` and
-`LICENSE.md` that are specific to Flatiron's curriculum. You can disregard or
-delete the files if you want.
-
 ---
 
-## Generating Your Environment
+### Generating The Environment
 
-You might have noticed in the file structure- there's already a Pipfile!
-
-Install any additional dependencies you know you'll need for your project by
-adding them to the `Pipfile`. Then run the commands:
+Run the following commands to set up the environment:
 
 ```console
 pipenv install
@@ -48,125 +40,30 @@ pipenv shell
 
 ---
 
-## Generating Your CLI
+## Holiday Table CLI
+Note: In your terminal, run the CLI with `python lib/cli.py`
 
-A CLI is, simply put, an interactive script and prompts the user and performs
-operations based on user input.
+Our CLI prompts the user with questions they might encounter at a holiday gathering. The main menu welcomes the user to the holiday table, then lists the options available for the user to interact with. 
 
-The project template has a sample CLI in `lib/cli.py` that looks like this:
+* Option 1 allows the user to see all the questions they will be asked at the holiday gathering.
+* Option 2 shows a list of all of the answer choices the user can respond with.
+* Option 3 lets the user navigate to a specific question by typing in the question id.
+* Option 4 lets the user navigate to a specific answer choice by typing in its id.
+* Option 5 gives the user the ability to create their own question.
+* Option 6 gives the user the ability to create their own answer.
+* Option 7 lets the user delete a question by entering its id.
+* Option 8 lets the user delete an answer by entering its id.
+* Option 9 allows the user to exit the dinner.
 
-```py
-# lib/cli.py
+--- 
 
-from helpers import (
-    exit_program,
-    helper_1
-)
+## Questions
 
+The `questions` model begins with the constructor function, initializing a question and id. The default id is "None". The `__repr__` method is used next to format the questions. Next, we have built an `all` function that selects all questions from the questions table in the database. The `from_db` method retrieves a question instance by its id. `Delete` finds the question by its id and performs a delete to remove this question from the database. `Save` will insert into the database the question created by the user and allow it to persist. The `create` method creates a new question. `find_by_id` fetches one specific question from the table using its id.
 
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
-
-
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
-
-
-if __name__ == "__main__":
-    main()
-```
-
-The helper functions are located in `lib/helpers.py`:
-
-```py
-# lib/helpers.py
-
-def helper_1():
-    print("Performing useful function#1.")
-
-
-def exit_program():
-    print("Goodbye!")
-    exit()
-```
-
-You can run the template CLI with `python lib/cli.py`, or include the shebang
-and make it executable with `chmod +x`. The template CLI will ask for input, do
-some work, and accomplish some sort of task.
-
-Past that, CLIs can be whatever you'd like, as long as you follow the project
-requirements.
-
-Of course, you will update `lib/cli.py` with prompts that are appropriate for
-your application, and you will update `lib/helpers.py` to replace `helper_1()`
-with a useful function based on the specific problem domain you decide to
-implement, along with adding other helper functions to the module.
-
-In the `lib/models` folder, you should rename `model_1.py` with the name of a
-data model class from your specific problem domain, and add other classes to the
-folder as needed. The file `lib/models/__init__.py` has been initialized to
-create the necessary database constants. You need to add import statements to
-the various data model classes in order to use the database constants.
-
-You are also welcome to implement a different module and directory structure.
-However, your project should be well organized, modular, and follow the design
-principal of separation of concerns, which means you should separate code
-related to:
-
-- User interface
-- Data persistence
-- Problem domain rules and logic
 
 ---
 
-## Updating README.md
+## Answers
 
-`README.md` is a Markdown file that should describe your project. You will
-replace the contents of this `README.md` file with a description of **your**
-actual project.
-
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this assignments's resources for a basic guide to Markdown.
-
-### What Goes into a README?
-
-This README serves as a template. Replace the contents of this file to describe
-the important files in your project and describe what they do. Each Python file
-that you edit should get at least a paragraph, and each function should be
-described with a sentence or two.
-
-Describe your actual CLI script first, and with a good level of detail. The rest
-should be ordered by importance to the user. (Probably functions next, then
-models.)
-
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
-
----
-
-## Conclusion
-
-A lot of work goes into a good CLI, but it all relies on concepts that you've
-practiced quite a bit by now. Hopefully this template and guide will get you off
-to a good start with your Phase 3 Project.
-
-Happy coding!
-
----
-
-## Resources
-
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+Much like the previous model, `answers` begins with the constructor function, initializing a response and its id. The default id is "None". The `__repr__` method is used to format the answers / responses. Next, we have built an `all` function that selects all answers from the answers table in the database. The `from_db` method retrieves an answer instance by its id. `Delete` finds the answer by its id and performs a delete to remove this answer from the database. `Save` will insert into the database the answer created by the user and allow it to persist. The `create` method creates a new answer. `find_by_id` fetches a specific answer from the table using its id.
