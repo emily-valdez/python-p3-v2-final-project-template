@@ -10,7 +10,7 @@ def question_list():
         for idx, question in enumerate(questions, 1):
             print(f"{idx}. {question}")
 
-        selected_question_number = int(input("Enter the number of the question to choose to start some holiday Q&A (or enter 0 to exit): "))
+        selected_question_number = int(input("Enter the number of the question to start some holiday Q&A (or enter 0 to exit): "))
 
         if selected_question_number == 0:
             print("Exiting the question list back to main menu...")
@@ -90,7 +90,7 @@ def delete_answer():
         print(f'Answer {id} not found')
 
 def exit_program():
-    print("Thanks for coming, Happy Holidays!")
+    print("Thanks for coming - Happy Holidays!")
     exit()
 
 def find_related_answer():
@@ -101,7 +101,7 @@ def find_related_answer():
         for answer in related_answers:
             print(answer)
     else:
-        print(f"No related answers found for question with ID {question_id}")
+        print(f"No related answers found for question with ID {question_id}.")
 
 def find_related_question():
     response = input('Enter the response to find the associated question: ')
