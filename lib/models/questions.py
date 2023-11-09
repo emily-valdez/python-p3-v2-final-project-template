@@ -45,3 +45,21 @@ class Question:
         sql = 'SELECT * FROM questions WHERE id = ?'
         row = CURSOR.execute(sql, (id,)).fetchone()
         return Question.from_db(row) if row else None
+    
+    @classmethod
+    def find_related_answers(cls, question_id):
+        from models.answers import Answer
+        sql = 'SELECT * FROM answers WHERE question_id = ?'
+        list_of_tuples = CURSOR.execute(sql, (question_id,)).fetchall()
+        return [Answer.from_db(row) for row in list_of_tuples]
+    
+    @property
+    def question(self):
+        return self._question
+
+    @question.setter
+    def question(self, question):
+        if isinstance(question, str) and len(question) > 0:
+            self._question = question
+        else:
+            raise ValueError('Question must be a non-empty string')

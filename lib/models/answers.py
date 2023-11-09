@@ -47,6 +47,40 @@ class Answer:
         sql = 'SELECT * FROM answers WHERE id = ?'
         row = CURSOR.execute(sql, (id,)).fetchone()
         return Answer.from_db(row) if row else None
+    
+    @classmethod
+    def find_related_questions(cls, response):
+        from models.questions import Question
+        sql = 'SELECT question_id FROM answers WHERE response = ?'
+        row = CURSOR.execute(sql, (response,)).fetchone()
+        if row:
+            question_id = row[0]
+            associated_question = Question.find_by_id(question_id)
+            if associated_question:
+                return associated_question
+        return None
+    
+    @property
+    def question_id(self):
+        return self._question_id
+
+    @question_id.setter
+    def question_id(self, question_id):
+        if isinstance(question_id, int):
+            self._question_id = question_id
+        else:
+            raise ValueError('question_id must be number')
+        
+    @property
+    def response(self):
+        return self._response
+
+    @response.setter
+    def response(self, response):
+        if isinstance(response, str) and len(response) > 0:
+            self._response = response
+        else:
+            raise ValueError('response must be non-empty string')
      
         
 

@@ -42,27 +42,19 @@ def question_list():
                 print("Thanks for playing! Exiting the program...")
                 break
 
-        #     create_option = input("Would you like to create a new answer for this question? (yes/no): ")
-        #     if create_option.lower() == "yes" or {selected_question}:
-        #         Answer.create_answer()
-        #     else:
-        #         print("Okay, no new answer will be created.")
-        # else:
-        #     print("Invalid question number. Please try again.")
-
 def answer_list():
     answers = Answer.all()
-    for answer in answers:
+    for answers in answers:
         print(answers)
 
 def question_find_by_id():
     id = input('Enter the questions id:')
-    question = Question.find_byid(id)
+    question = Question.find_by_id(id)
     print(question) if question else print(f'Question {id} not found')
 
 def answer_find_by_id():
     id = input('Enter the answers id:')
-    answer = Answer.find_byid(id)
+    answer = Answer.find_by_id(id)
     print(answer) if answer else print(f'Answer {id} not found')
 
 def create_answer(cls):
@@ -78,7 +70,7 @@ def create_question():
 
 def delete_question():
     id = input('Enter the questions id:')
-    if question := Question.find_byid(id):
+    if question := Question.find_by_id(id):
         question.delete()
         print(f'Question {id} deleted')
     else:
@@ -86,7 +78,7 @@ def delete_question():
 
 def delete_answer():
     id = input('Enter the answers id:')
-    if answer := Answer.find_byid(id):
+    if answer := Answer.find_by_id(id):
         answer.delete()
         print(f'Answer {id} deleted')
     else:
@@ -96,5 +88,22 @@ def exit_program():
     print("Thanks for coming, Happy Holidays!")
     exit()
 
-def to_go_order():
-    pass
+def find_related_answer():
+    question_id = input('Enter the question_id for which you want to find related answers:')
+    related_answers = Question.find_related_answers(question_id)
+
+    if related_answers:
+        for answer in related_answers:
+            print(answer)
+    else:
+        print(f"No related answers found for question with ID {question_id}")
+
+def find_related_question():
+    response = input('Enter the response to find the associated question: ')
+    related_question = Answer.find_related_questions(response)
+
+    if related_question:
+
+        print(f"Related question: {related_question}")
+    else:
+        print(f"No related question found for the response.")

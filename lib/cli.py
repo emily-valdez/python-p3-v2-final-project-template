@@ -10,7 +10,8 @@ from helpers import (
     create_answer,
     delete_question,
     delete_answer,
-    to_go_order
+    find_related_question,
+    find_related_answer
 )
 
 def main():
@@ -35,9 +36,11 @@ def main():
         elif choice == "8":
             delete_answer()
         elif choice == "9":
-            exit_program()
+            find_related_question()
         elif choice == "10":
-            to_go_order()
+            find_related_answer()
+        elif choice == "11":
+            exit_program()
         else:
             print("Invalid option.")
 
@@ -53,8 +56,10 @@ def menu():
     print("6. Create new answer")
     print("7. Delete a question")
     print("8. Delete a answer")
-    print("9. Exit the dinner ")
-    print("10. No capacity for an inquisition? It happens to all of us. Build a plate to-go instead.")
+    print("9. Find related questions")
+    print('10. Find related answers')
+    print("11. Exit the dinner ")
+    
 
 
 
