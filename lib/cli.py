@@ -55,7 +55,7 @@ def menu():
     print("5. Create new question")
     print("6. Create new answer")
     print("7. Delete a question")
-    print("8. Delete a answer")
+    print("8. Delete an answer")
     print("9. Find related questions")
     print('10. Find related answers')
     print("11. Exit the dinner ")
