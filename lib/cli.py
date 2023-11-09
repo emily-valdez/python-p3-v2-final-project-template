@@ -46,7 +46,7 @@ def main():
 
 
 def menu():
-    print("Welcome! to Holiday family dinners. In true holiday fashion, your loved ones want updates on your life. Take a seat at the dining table, and get ready for a round of rapid-fire questions! For each question, select a recommended response, or redirect the conversation to the food. Once you have made it through all of the questions, your reward awaits…")
+    print("Welcome! to Holiday family dinners. In true holiday fashion, your loved ones want updates on your life. Take a seat at the dining table, and get ready for a round of rapid-fire questions! For each question, select a recommended response, or redirect the conversation to the food. If you are not in the mood to be questioned, you can exit the dinner by selecting option 11.")
     
     print("1. Get a list of all the Questions ")
     print("2. Get a list of all the Answers")

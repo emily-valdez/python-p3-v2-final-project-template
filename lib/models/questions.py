@@ -62,4 +62,4 @@ class Question:
         if isinstance(question, str) and len(question) > 0:
             self._question = question
         else:
-            raise ValueError('Question must be a non-empty string')
+            raise ValueError('Question must be a non-empty string.')
